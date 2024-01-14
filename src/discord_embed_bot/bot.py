@@ -56,10 +56,16 @@ async def search_commannd(ctx: Context, arg):
 
 
 @bot.command(name="index")
-async def index_command(ctx: Context):
+async def index_command(ctx: Context, arg):
     """
     indexes all messages on a server
     """
+    channel_limit = None
+    try:
+        channel_limit = int(arg)
+    except Exception as e:
+        print(e)
+
     await ctx.message.reply("Start indexing!")
     counter = 0
     storage = {"messages": [], "message_ids": [], "channel_ids": [], "guild_ids": []}
@@ -67,7 +73,7 @@ async def index_command(ctx: Context):
         for channel in ctx.guild.channels:
             await ctx.message.reply(f"🔍 through [{channel.name}]")
             if isinstance(channel, TextChannel):
-                async for message in channel.history(limit=10):
+                async for message in channel.history(limit=channel_limit):
                     counter += 1
                     if _filter_embed(message):
                         storage["messages"].append(message.content)

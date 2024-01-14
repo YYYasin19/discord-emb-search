@@ -7,4 +7,6 @@ services:
       # persist db across containers
       - ./chroma:/app/chroma
       # persist embedding models
-      - ~/.cache/huggingface:/home/mambauser/.cache/huggingface
+      - ./sentence_transformers:/home/mambauser/web/sentence_transformers
+    environment:
+      - SENTENCE_TRANSFORMERS_HOME=./sentence_transformers
