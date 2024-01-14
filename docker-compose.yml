@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  bot:
+    build: .
+    command: "discord-embed-bot"
+    volumes:
+      # persist db across containers
+      - ./chroma:/app/chroma
+      # persist embedding models
+      - ~/.cache/huggingface:/home/mambauser/.cache/huggingface

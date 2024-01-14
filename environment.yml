@@ -1,0 +1,10 @@
+name: discord-bot
+channels:
+- conda-forge
+dependencies:
+- chromadb
+- discord.py
+- python=3.11
+- python-dotenv
+- sentence-transformers
+
