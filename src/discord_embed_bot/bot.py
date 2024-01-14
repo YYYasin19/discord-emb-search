@@ -28,18 +28,6 @@ def _filter_embed(message: Message) -> bool:
     return long_enough and (not in_command_list) and (not from_bot)
 
 
-# TODO: remove this method or write the user directly or something like that.. create a new channel maybe?
-@bot.event
-async def on_ready():
-    channel = bot.get_channel(1195726927659536516)
-    if channel:
-        await channel.send("Hi! Bin online.")  # type: ignore
-
-        print(f"{bot.user} is connected to the following server:\n")
-        for server in bot.guilds:
-            print(f"{server.name}(id: {server.id})")
-
-
 @bot.command(name="search")
 async def search_commannd(ctx: Context, arg):
     print(f"log: search with {ctx} for [{ctx.message}]")
