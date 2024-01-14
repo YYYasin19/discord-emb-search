@@ -56,15 +56,11 @@ async def search_commannd(ctx: Context, arg):
 
 
 @bot.command(name="index")
-async def index_command(ctx: Context, arg):
+async def index_command(ctx: Context):
     """
     indexes all messages on a server
     """
-    channel_limit = None
-    try:
-        channel_limit = int(arg)
-    except Exception as e:
-        print(e)
+    channel_limit = None  # TODO: read from arg
 
     await ctx.message.reply("Start indexing!")
     counter = 0
